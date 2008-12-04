@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init()">
+<mx:Script>
+	<![CDATA[
+		public function init():void{
+			
+			dataCollection = imageData.item;
+			timer.addEventListener(TimerEvent.TIMER,changeImage);
+			timer.start();
+			
+						
+		}
+		
+		
+	]]>
+</mx:Script>
+<mx:Script source="ImageSwitcherUtil.as"/>
+
+		<mx:ApplicationControlBar x="48.5" y="57" width="389" height="235" id="main_ACB">
+		<mx:Canvas width="100%" height="100%" id="main_Canvas" label="main_Canvas" backgroundImage="cropped.jpg">
+			<mx:VBox x="10" y="0" width="15%" height="100%" id="nav_VBox">
+				<mx:Image id="nav_img1" width="100%" height="25%" click="thumbnailClicked(0)">
+					<mx:source>1.png</mx:source>
+				</mx:Image>
+				<mx:Image id="nav_img2" width="100%" height="25%" click="thumbnailClicked(1)">
+					<mx:source>2.png</mx:source>
+				</mx:Image>
+				<mx:Image id="nav_img3" width="100%" height="25%" click="thumbnailClicked(2)">
+					<mx:source>3.png</mx:source>
+				</mx:Image>
+				<mx:Image id="nav_img4" width="100%" height="25%" click="thumbnailClicked(3)">
+					<mx:source>file:///C|/Users/sd71235/Desktop/wl_alienware_area51.gif</mx:source>
+				</mx:Image>
+			</mx:VBox>
+			<mx:Image x="73" y="10" width="80%" height="100%" id="prod_image" scaleContent="true" autoLoad="true">
+				<mx:source>wl_alienware_area51.gif</mx:source>
+			</mx:Image>
+			<mx:TextArea x="70" y="164" width="80%" borderThickness="0" alpha="0.0" id="prod_desc" text="Company : Model No" wordWrap="true" editable="false" fontFamily="Comic Sans MS" fontSize="15" height="25%"/>
+		</mx:Canvas>
+	</mx:ApplicationControlBar>
+<mx:XML xmlns="" id="imageData">
+	<root>
+	<item>
+	<sno>0</sno>
+	<imgsrc>wl_alienware_area51.gif</imgsrc>
+	<desc>item 0 </desc>
+	</item>
+	
+	<item>
+	<sno>1</sno>
+	<imgsrc>wl_alienware_area51.gif</imgsrc>
+	<desc>item 1</desc>
+	</item>
+	
+	<item>
+	<sno>2</sno>
+	<imgsrc>wl_alienware_area51.gif</imgsrc>
+	<desc>item 2</desc>
+	</item>
+	
+		<item>
+	<sno>3</sno>
+	<imgsrc>wl_alienware_area51.gif</imgsrc>
+	<desc>item 3</desc>
+	</item>
+	
+	</root>
+	
+	
+</mx:XML>
+
+	<mx:Fade alphaFrom="1" alphaTo="0"  duration="500" id="fadeOut" effectEnd="changeImageInstantly()"/>
+	<mx:Fade alphaFrom="0" alphaTo="1"  duration="500" id="fadeIn" />
+</mx:WindowedApplication>

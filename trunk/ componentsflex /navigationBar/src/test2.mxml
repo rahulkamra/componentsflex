@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:accordian="com.satyam.components.accordian.*">
+	
+	<mx:XML xmlns="" id="myData">
+<root>
+<item>
+	<parent>
+	<label>Satyam</label>
+	<parentfunction>menuFunc</parentfunction>
+	</parent>
+	
+	<children>
+	<child>
+	<label>One</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+	<child>
+	<label>Two</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+		<child>
+	<label>Two</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+		<child>
+	<label>Two</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+	</children>
+		
+</item>
+	<item>
+	<parent>
+	<label>Menu2</label>
+	<parentfunction>menuFunc1</parentfunction>
+	</parent>
+	
+	<children>
+	
+	<child>
+	<label>Menu2</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+	
+	</children>
+		
+</item><item>
+	<parent>
+	<label>Menu3</label>
+	<parentfunction>menuFunc</parentfunction>
+	</parent>
+	
+	<children>
+	
+	</children>
+		
+</item>
+	</root>
+</mx:XML>
+	<accordian:myAccordian myData="{myData}" effectDuration="700" defaultOpened="1" x="22" y="18" width="259" height="302" accordianBGColor="[#ffff00,#0000ff]" accordianAlpha="[1.0,1.0]"/>
+</mx:Application>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:ns1="*" >
+<mx:Script>
+	<![CDATA[
+		import mx.formatters.SwitchSymbolFormatter;
+		import mx.effects.Move;
+		import mx.collections.ArrayCollection;
+		import mx.controls.Alert;
+		import mx.controls.Button;
+		var count:int=0;
+		
+		
+		public var itemList:ArrayCollection = new ArrayCollection();
+		public static const HEIGHT_4 = 34;
+		public static const WIDTH_4 = 84;
+		
+		public static const HEIGHT_3 = 51;
+		public static const WIDTH_3 = 126;
+		
+		public static const HEIGHT_2:int = 68;
+		public static const WIDTH_2:int = 168;
+		
+	
+		public static var comboBoxDP:Array = [1,2,3,4];
+		public static const PADDING_SIZE:int = 5;
+		
+			
+		public function addItems():void{			
+			
+			var temp:myItemRend= new myItemRend();
+			itemList.addItem(temp);
+			
+			temp.tempText = itemLabelInput.text;
+			omgCanvas.addChild(temp);
+			setLayout()
+			
+		}
+		[Bindable]
+		var labelText:String;
+		public function setLayout():void{
+			var numCols:int = comboColumns.selectedItem as int
+			var tempHeight =0;
+			var tempWidth=0;
+			switch(numCols){
+				case 4: 
+					tempHeight = HEIGHT_4;
+					tempWidth = WIDTH_4;
+					break;
+				
+				case 3:
+					tempHeight = HEIGHT_3;
+					tempWidth = WIDTH_3;
+					break;
+				
+				default:
+					tempHeight = HEIGHT_2;
+					tempWidth = WIDTH_2;
+					break;
+				
+			}
+			//var numCols:int = 4;
+			var xTo:int = 0;
+			var yTo:int = 0;
+			var row:int = 0;
+            var col:int = -1;
+            
+			for each(var tempObj:myItemRend in itemList){
+				//Alert.show(tempObj.toString());
+				tempObj.height = tempHeight;
+				tempObj.width = tempWidth;
+				col++;
+				 if (col > numCols - 1)
+					{
+                        row++;
+                        col = 0;
+                    }
+								
+				xTo = col*((tempWidth+PADDING_SIZE));
+				yTo = row*((tempHeight));
+				
+				labelText = String(row)+String(col);
+				
+				if(tempObj.x==xTo && tempObj.y==yTo){
+					continue;
+				}
+				
+				
+				
+				var move:Move = new Move(tempObj);
+				move.xTo = xTo;
+				move.yTo = yTo;
+				move.duration=1000;
+				move.play();
+				
+				
+			}
+			
+			
+		}
+	]]>
+</mx:Script>
+<mx:Style>
+Canvas{
+	backgroundColor:"#ffefff"; 
+	drop-shadow-enabled:"true";
+	corner-radius:30;
+	/*borderColor:"#cccccc" 
+	dropShadowColor:"#000000" 
+	shadowDistance:"5"*/
+}	
+</mx:Style>
+	<mx:Canvas x="47" y="19" width="776" height="416" id="omgCanvas" showInAutomationHierarchy="true" autoLayout="true" backgroundColor="#ffefff" styleName="myStyle">
+	</mx:Canvas>
+	<mx:Button x="734" y="443" label="Add Items in Canvas" click="addItems()"/>
+	<mx:ComboBox x="167" y="443" id="comboColumns" dataProvider="{comboBoxDP}">
+	</mx:ComboBox>
+	<mx:Label x="10" y="445" text="Select No Of Columns"/>
+	<mx:TextInput x="527" y="443" id="itemLabelInput" text="{labelText}"/>
+	
+</mx:Application>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" width="440" height="366" creationComplete="init()">
+	<mx:states>
+		<mx:State name="state2">
+			<mx:SetProperty target="{omgCanvas}" name="width" value="294"/>
+		</mx:State>
+	</mx:states>
+<mx:Script>
+	<![CDATA[
+		import mx.controls.listClasses.BaseListData;
+		import mx.controls.listClasses.ListBase;
+		import mx.automation.delegates.controls.ListBaseContentHolderAutomationImpl;
+		import mx.controls.Alert;
+		import mx.events.EffectEvent;
+		import mx.events.ListEvent;
+		import mx.effects.Move;
+		import mx.collections.ArrayCollection;
+		[Bindable]
+		public var tempArray:ArrayCollection=new ArrayCollection();
+
+		public function init():void{
+			var temp:myItemRend=new myItemRend();
+			temp.text='WTF!!!!';
+			//temp.showInAutomationHierarchy=true;
+			//omgCanvas.addChildAt(temp,0);
+			
+			omgCanvas.addChild(temp)
+			
+			var temp2:myItemRend=new myItemRend();
+			temp2.text='asd!!........';
+			//temp2.showInAutomationHierarchy=true;
+			omgCanvas.addChild().
+			omgCanvas.addChild(temp)
+		}
+		
+		  private function showDetails(event:Object):void {
+            var row:int = -1;
+
+            //should be computed using border metrics instead of hard-coding the 20, but...
+			var xTo:Number = this.width - 77 - 20;
+            var yTo:Number;
+
+            var move:Move;
+            var first:Boolean = true;
+            //var selectedThumb:ProductCatalogThumbnail;
+
+//            var n:int = tempArray.length;
+//           for(var count:int=0;count<n;count++){
+//            	yTo=count+tempArray[count].height+20
+//            	move = new Move();
+//            	move.target='L1';
+//            	  move.xTo = xTo;
+//             move.yTo = yTo;
+//             move.play();
+//             
+//            	
+//           }
+				
+				
+			
+
+		  }
+		
+	]]>
+</mx:Script>
+	<mx:Canvas width="360" height="257" id="omgCanvas"  verticalScrollPolicy="off"
+        horizontalScrollPolicy="off" ></mx:Canvas>
+</mx:Panel>

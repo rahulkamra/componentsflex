@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:ApplicationControlBar xmlns:mx="http://www.adobe.com/2006/mxml" width="83"  height="33">
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var tempText:String = "Default";
+			public function init():void{
+				//tempText=tempLabel.text;
+			}
+		]]>
+	</mx:Script>
+	<mx:Label  id="tempLabel" width="100%" height="100%" text="{tempText}"/>
+</mx:ApplicationControlBar>
